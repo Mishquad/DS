@@ -1,3 +1,3 @@
-# The first page by me
-CV, Algorithms. Access by link below: <h1>
+# The 1st page by me
+CV, Algorithms <h1>
 [Link]( https://mishquad.github.io/DS/)
