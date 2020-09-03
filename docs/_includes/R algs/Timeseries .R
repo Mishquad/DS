@@ -1,4 +1,4 @@
-df <- read.csv('D:/Coding/blizz.csv',
+df <- read.csv('D:/blizz.csv',
                header = TRUE, stringsAsFactors = FALSE)
 colnames(df) <- c('ticker', 'period', 'date', 'time', 'price')
 
