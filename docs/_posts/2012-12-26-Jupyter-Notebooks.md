@@ -1,7 +1,7 @@
 ---
 category: Stuff
 path: '/stuff'
-title: 'Post a thing'
+title: 'Projects in Jupyter'
 type: 'POST'
 
 layout: nil

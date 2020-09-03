@@ -1,6 +1,6 @@
 ---
 path: '/login'
-title: 'Authenticate'
+title: 'My CV'
 
 layout: nil
 ---
