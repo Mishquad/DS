@@ -1,4 +1,3 @@
-# The 1st page by me
-CV, Algorithms <h1>
+# Landing profile-page : CV and projects
 [Link]( https://mishquad.github.io/DS/)
 
