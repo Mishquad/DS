@@ -1,0 +1,55 @@
+Код sql :
+
+* 1.
+SELECT name, COUNT(trip) AS count  
+FROM Passenger
+JOIN Pass_in_trip
+    ON Passenger.id=Pass_in_trip.passenger
+GROUP BY passenger
+HAVING COUNT(trip) > 0
+ORDER BY COUNT(trip) DESC, name ASC ;
+* 2.
+SELECT DISTINCT TIMEDIFF( 
+                (SELECT end_pair FROM Timepair WHERE id=4),
+                (SELECT start_pair FROM Timepair WHERE id=2)
+                ) AS time
+FROM Timepair;
+* 3.
+SELECT Rooms.*
+FROM Rooms
+JOIN Reservations
+    ON Rooms.id=Reservations.room_id
+WHERE WEEK(Reservations.start_date, 1) = 12 AND YEAR(Reservations.start_date)=20204.
+* 4.
+SELECT classroom 
+FROM Schedule
+GROUP BY classroom
+HAVING COUNT(classroom)  >= ALL(
+    (SELECT COUNT(classroom) 
+     FROM Schedule 
+     GROUP BY classroom
+     ORDER BY COUNT(classroom) DESC )
+     )
+
+* 5.
+with distinct_dates as (
+select distinct 
+	date 
+from 
+	income_o
+)
+, intervals as (
+select 
+	date dt1, lead(date) over(order by date) as dt2 
+from 
+	distinct_dates
+)
+select coalesce(sum(out),0), dt1, dt2 from intervals
+left join Outcome_o on Outcome_o.date >  dt1 and Outcome_o.date <= dt2
+where dt2 is not null
+group by dt1, dt2
+
+* 6.
+Не совсем понял, как реализовать «суперстолбцы» из задания – если бы можно было обойтись без них, то довольно очевидного 
+select row_number() over(order by date), name, date from battles – хватило бы. Увидев правильный результат, все равно не получилось прийти к идее, как ограничить тогда выдачу 6 строк вместо трёх нужных, если каждый столбец – результат выполнения оконной функции. Через limit тоже не совсем верный фрагмент «обрезался».
+
